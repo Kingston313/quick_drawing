@@ -1,6 +1,7 @@
-import pandas as pd
 import matplotlib.pyplot as plt
+import pandas as pd
 from matplotlib import font_manager
+
 from scripts.common_plots import scatter_line_plot
 
 font_dirs = ['font/']
@@ -17,6 +18,5 @@ if __name__ == '__main__':
     iris = pd.read_csv('data/raw/iris.csv')
     scatter_line_plot(tbl=iris, scatter_x_col='Petal.Length', scatter_y_col='Petal.Width',
                       line_x_col='Sepal.Length', line_y_col='Sepal.Width',
-                      x_label_name='x轴名称', scatter_y_label_name='散点图y轴名称', line_y_label_name='折线图y轴名称')
-    # plt.show()
-    plt.savefig('data/output/{}.png'.format('输出图片名'))
+                      x_label_name='x轴名称', scatter_y_label_name='散点图y轴名称', line_y_label_name='折线图y轴名称',
+                      output_png_name='输出图片名')
