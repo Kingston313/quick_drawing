@@ -1,32 +1,21 @@
-
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
+from matplotlib import font_manager
+from scripts.common_plots import scatter_line_plot
 
+font_dirs = ['font/']
+font_files = font_manager.findSystemFonts(fontpaths=font_dirs)
 
+for font_file in font_files:
+    font_manager.fontManager.addfont(font_file)
 
-sns.set_theme(style="darkgrid")
+plt.rcParams['font.family'] = 'SimHei'
+plt.rcParams['axes.unicode_minus']=False  # 用来正常显示负号
 
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    plt.rcParams["font.sans-serif"] = ["SimHei"]
-    plt.rcParams["axes.unicode_minus"] = False
-
+    # 绘制散点图
     iris = pd.read_csv('data/raw/iris.csv')
-    print(iris.columns)
-    # sns.relplot(data=iris, x="Sepal.Length", y="Sepal.Width", kind='line', estimator=None, col='Species')
-    # plt.show()
-
-    fig, ax1 = plt.subplots(figsize=(10, 6))
-    ax1.set_xlabel('Length', fontsize=16)
-    ax1.set_ylabel('主图y轴指标名称', fontsize=16, color='tab:green')
-    ax1 = sns.scatterplot(data=iris, x='Petal.Length', y='Petal.Width')
-    ax1.tick_params(axis='y')
-
-    ax2 = ax1.twinx()
-    ax2.set_ylabel('副图y轴指标名称', fontsize=16, color='tab:green')
-    ax2 = sns.lineplot(data=iris, x='Sepal.Length', y='Sepal.Width', color='tab:red', estimator=None)
-    ax1.tick_params(axis='y')
-
+    scatter_line_plot(tbl=iris, scatter_x_col='Petal.Length', scatter_y_col='Petal.Width', \
+                      line_x_col='Sepal.Length', line_y_col='Sepal.Width', \
+                      x_label_name='x轴名称', scatter_y_label_name='散点图y轴名称', line_y_label_name='折线图y轴名称')
     plt.show()
