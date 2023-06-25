@@ -34,6 +34,7 @@ def scatter_line_plot(tbl, scatter_x_col, scatter_y_col, line_x_col, line_y_col,
     ax1 = sns.scatterplot(data=tbl, x=scatter_x_col, y=scatter_y_col)
     ax1.tick_params(axis='y')
 
+
     ax2 = ax1.twinx()
     ax2.set_ylabel(line_y_label_name, fontsize=16, color='tab:green')
     ax2 = sns.lineplot(data=tbl, x=line_x_col, y=line_y_col, color='tab:red', estimator=None)
