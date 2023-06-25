@@ -10,12 +10,13 @@ for font_file in font_files:
     font_manager.fontManager.addfont(font_file)
 
 plt.rcParams['font.family'] = 'SimHei'
-plt.rcParams['axes.unicode_minus']=False  # 用来正常显示负号
+plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
 
 if __name__ == '__main__':
     # 绘制散点图
     iris = pd.read_csv('data/raw/iris.csv')
-    scatter_line_plot(tbl=iris, scatter_x_col='Petal.Length', scatter_y_col='Petal.Width', \
-                      line_x_col='Sepal.Length', line_y_col='Sepal.Width', \
+    scatter_line_plot(tbl=iris, scatter_x_col='Petal.Length', scatter_y_col='Petal.Width',
+                      line_x_col='Sepal.Length', line_y_col='Sepal.Width',
                       x_label_name='x轴名称', scatter_y_label_name='散点图y轴名称', line_y_label_name='折线图y轴名称')
-    plt.show()
+    # plt.show()
+    plt.savefig('data/raw/{}.png'.format('输出图片名'))
