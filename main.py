@@ -19,4 +19,4 @@ if __name__ == '__main__':
                       line_x_col='Sepal.Length', line_y_col='Sepal.Width',
                       x_label_name='x轴名称', scatter_y_label_name='散点图y轴名称', line_y_label_name='折线图y轴名称')
     # plt.show()
-    plt.savefig('data/raw/{}.png'.format('输出图片名'))
+    plt.savefig('data/output/{}.png'.format('输出图片名'))
